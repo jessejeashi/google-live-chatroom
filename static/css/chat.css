@@ -1,0 +1,60 @@
+h1{
+  font-size:12px;
+  font-weight:normal;
+  color:#C1CDCD;
+  padding:0;
+  margin:0;
+}
+
+h2{
+  font-size:12px;
+  font-weight:normal;
+  color:#8DB6CD;
+  padding:0;
+  margin:0;
+}
+
+h3{
+  font-size:12px;
+  font-weight:normal;
+  color:#8FBC8F;
+  padding:0;
+  margin:0;
+}
+
+h4{
+  font-size:15px;
+  font-weight:normal;
+  color:#3B3B3B;
+  padding:0;
+  margin-bottom:-12px;
+}
+
+h6{
+  font-size:15px;
+  font-weight:normal;
+  color:#3B3B3B;
+}
+
+h7{
+  font-size:15px;
+  font-weight:normal;
+  color:#21deef;
+}
+
+
+#content {
+  display:none;
+}
+
+#token {
+	display:none;
+}
+
+#imageIds {
+  display:none;
+}
+
+#url {
+  display:none;
+}

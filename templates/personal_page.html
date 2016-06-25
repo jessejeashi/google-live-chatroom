@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<link href="../static/css/chat_playing.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="../static/js/jquery.js"></script>
+<script type="text/javascript" src="../static/js/chat_playing.js"></script>
+<title>personal_page</title>   
+</head>
+
+<body>
+<div id="container">
+<div class="container1">
+  <div class="banner">
+  <a href="/index2">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome <b>{{nickname}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Online count: {{count}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ logout_url | safe }}">Sign out</a>
+  </div>
+</div>
+
+<!--Personal Information-->
+<div class="container2">
+<div class="grid_12">Personal Information
+</div>
+         <div class="current" size="8">
+                <table style="text-align: left;font-size: 14px;" >
+                <tr >
+                <td name="name" value="{{ nickname }}">Name: {{nickname}}</td>
+                </tr>
+                <tr >
+                <td name="email" value="{{ email }}">Email: {{email}}</td>
+                </tr>
+                </table>
+          </div>
+</div>
+<!--//Personal Information-->
+
+<!--Add new video chatroom-->
+<div class="container3">
+<div class="creat">Add new video chatroom</div>
+<form id="targetProduct" class="registed" action="/personal_page" method="POST" enctype="multipart/form-data">
+							
+				<div class="product_name">
+					<strong>chatroom name: </strong><sup class="surely">*</sup><br/>
+					<input type="text" name="chat_name" class="" value="" id="chat_name" required/>
+				</div>
+				
+				<div class="owner">
+					<strong>Owner: </strong><sup class="surely">*</sup><br/>
+					<input type="text" name="owner" class="" value="{{nickname}}" id="owner" required/>
+				</div>
+						
+				<div class="url">
+					<strong>Youtube ID:</strong><sup class="surely">*</sup><br/>
+					<input type="text" name="url" class="" value="" id="url" required/>
+					
+				</div>
+				
+				<div class="description">
+					<strong>Description: </strong><sup class="surely">*</sup><br/>
+					<input type="text" name="description" class="" value="" size="50" id="description" required/>
+				</div>
+        <div class="description">
+          <input type="file" name="file" required />
+        </div>
+				
+				
+				<div class="submit">										
+					<input type="submit" id="publish" value="publish"/>
+					<sup class="surely">*</sup><span>Required Field</span>
+				</div>
+			</form>            
+</div>
+<!--//Add new video chatroom-->
+
+<!--Chatroom list-->
+<div class="container4">
+<div class="grid_11">
+  <div class="chat_playing">Chatroom list</div>
+ <div class="playing_container">
+      {% for playing in playings %}
+				<div class="prev">
+						<a href="/chat_page/{{playing.imageId}}"><img src="/file/download/{{playing.imageId}}" alt="" title="" /></a>
+				</div>
+				
+
+<div class="entry_content">
+						<a href="/chat_page/{{playing.imageId}}"><h3 class="title" style="font-size:14px;">{{playing.chat_name}}</h3></a>
+						<p style="font-size:14px">Description:{{playing.description}}</p>
+            <p style="font-size:14px">Click: {{playing.clicks}}</p>
+						<a class="more" href="/chat_page/{{playing.imageId}}">Chatroom_page</a>
+<div class="cart">
+ <form action="/personal_page" method="POST"><button id="closechat" type="submit" name="closed" value="{{playing.imageId}}"/>Close</form>
+ </div>
+					</div>
+                
+ {% endfor %}
+ 
+ <!--Chatroom list-->
+ 
+ </div>
+</div>
+</div>
+</div>
+
+<!--Publish successfullly dialog-->
+    <div id="DivLocker"></div>
+    <div id="upcontainer">
+    <div id="courselayout">Confirmation</div>
+    <div id="downcontainer">
+    <div id="pic1"><img src="../static/images/notifi.png" align="left" height="112" width="112"></div>
+    <span>
+    <div id="iems">Attention:</div>
+    <div id="inter">Your data is saved successfully</div>
+    <form>
+    <input type="button" id="closedia" value="Done"/></form>
+    </span>
+    </div>
+</div>
+<!--//Publish successfullly dialog-->
+</body>
+</html>
